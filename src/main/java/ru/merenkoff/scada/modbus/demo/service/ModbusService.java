@@ -10,6 +10,7 @@ import net.wimpi.modbus.net.TCPMasterConnection;
 
 import net.wimpi.modbus.procimg.InputRegister;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.merenkoff.scada.modbus.demo.domain.Slave1Data;
 import ru.merenkoff.scada.modbus.demo.repository.Slave1DataRepository;
@@ -17,6 +18,7 @@ import ru.merenkoff.scada.modbus.demo.repository.Slave1DataRepository;
 import java.net.InetAddress;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ModbusService {
@@ -24,6 +26,7 @@ public class ModbusService {
     private TCPMasterConnection connection;
     @Autowired
     private Slave1DataRepository slave1DataRepository;
+    private Slave1Data lastReadData;
 
     @PostConstruct
     public void init() {
@@ -98,9 +101,35 @@ public class ModbusService {
         return builder.build();
     }
 
+    @Scheduled(fixedRate = 5000) // Запускать каждые 5 секунд
+    @Transactional
+    public void monitorModbus() {
+        Slave1Data extractedData = extractSlave1DataFromModbus();
+
+        // Проверяем, были ли изменения в основных полях
+        if (hasSignificantChange(lastReadData, extractedData)) {
+            saveSlave1Data(extractedData);
+            lastReadData = extractedData; // Обновляем последнее состояние
+        }
+    }
+
+    private boolean hasSignificantChange(Slave1Data oldData, Slave1Data newData) {
+        if (oldData == null) {
+            return true; // Если нет старых данных, сохраняем новые
+        }
+
+        // Сравниваем основные поля, игнорируя timestamp
+        return !Objects.equals(oldData.getWordTag(), newData.getWordTag()) ||
+                !Objects.equals(oldData.getFloatTag(), newData.getFloatTag()) ||
+                !Objects.equals(oldData.getShortIntTag(), newData.getShortIntTag()) ||
+                !Objects.equals(oldData.getIntegerTag(), newData.getIntegerTag()) ||
+                !Objects.equals(oldData.getDwordTag(), newData.getDwordTag());
+    }
+
     @Transactional
     public void saveSlave1Data(Slave1Data slave1Data) {
         slave1DataRepository.save(slave1Data);
+        lastReadData = slave1Data;
     }
 
     @Transactional
