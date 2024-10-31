@@ -1,4 +1,4 @@
-package com.example.scada.modbus.demo;
+package ru.merenkoff.scada.modbus.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
