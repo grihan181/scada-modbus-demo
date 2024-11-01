@@ -23,7 +23,7 @@ class ModbusIntegrationTest {
     @Test
     public void testSlave1DataExtractSaveGet() {
         // Извлечение данных из Modbus
-        Slave1Data extractedData = modbusService.extractSlave1DataFromModbus();
+        Slave1Data extractedData = modbusService.extractSlave1Data();
 
         // Убедимся, что данные не null перед сохранением
         assertNotNull(extractedData, "Extracted Slave1Data should not be null");
