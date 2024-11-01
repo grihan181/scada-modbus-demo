@@ -17,6 +17,9 @@ class ModbusIntegrationTest {
     @Autowired
     private ModbusService modbusService;
 
+    @Autowired
+    private Slave1PersistenceService persistenceService;
+
     @Test
     public void testSlave1DataExtractSaveGet() {
         // Извлечение данных из Modbus
@@ -26,10 +29,10 @@ class ModbusIntegrationTest {
         assertNotNull(extractedData, "Extracted Slave1Data should not be null");
 
         // Сохранение данных
-        modbusService.saveSlave1Data(extractedData);
+        persistenceService.save(extractedData);
 
         // Получение всех записей из базы данных
-        List<Slave1Data> allDataFromDBList = modbusService.getAllSlave1DataList();
+        List<Slave1Data> allDataFromDBList = persistenceService.getAll();
 
         // Проверка, что размер списка увеличился на 1
         assertEquals(1, allDataFromDBList.size(), "There should be one record in the database");
