@@ -17,13 +17,13 @@ import java.time.LocalDateTime;
 public class Slave1Data {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;                   // Уникальный идентификатор записи (будет автоинкрементироваться)
+    private Long id;
 
-    private Integer wordTag;          // Значение Word (16 бит беззнаковое целое)
-    private Float floatTag;           // Значение Float (32 бита)
-    private Byte shortIntTag;         // Значение ShortInt (8 бит)
-    private Integer integerTag;       // Значение Integer (32 бита)
-    private Long dwordTag;            // Значение DWord (32-битное беззнаковое целое)
+    private Integer wordTag;
+    private Float floatTag;
+    private Byte shortIntTag;
+    private Integer integerTag;
+    private Long dwordTag;
 
-    private LocalDateTime timestamp;  // Время считывания данных
+    private LocalDateTime timestamp;
 }

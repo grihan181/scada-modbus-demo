@@ -6,5 +6,5 @@ import ru.merenkoff.scada.modbus.demo.domain.Slave1Data;
 
 @Repository
 public interface Slave1DataRepository extends JpaRepository<Slave1Data, Long> {
-    // Здесь можно добавить дополнительные методы, если это необходимо
+
 }
