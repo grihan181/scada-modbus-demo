@@ -1,6 +1,5 @@
 package ru.merenkoff.scada.modbus.demo.domain;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,16 +16,16 @@ import java.time.Instant;
 @AllArgsConstructor
 @Builder
 @Data
-public class Slave1Data {
+public class Slave2Data {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer wordTag;
-    private Float floatTag;
-    private Byte shortIntTag;
-    private Integer integerTag;
-    private Long dwordTag;
+    private Long int64Tag;
+    private Instant dateTimeTag;
+    private Double doubleTag;
+    private String stringTag;
+    private Boolean boolTag;
 
     private Instant timestamp;
 }

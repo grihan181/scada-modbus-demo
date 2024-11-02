@@ -14,8 +14,8 @@ public interface Slave1DataMapper {
     @Mapping(target = "shortIntTag", source = ".", qualifiedByName = "extractShortIntTagFromRegisters")
     @Mapping(target = "integerTag", source = ".", qualifiedByName = "extractIntegerTagFromRegisters")
     @Mapping(target = "dwordTag", source = ".", qualifiedByName = "extractDwordTagFromRegisters")
-    @Mapping(target = "timestamp", expression = "java(java.time.LocalDateTime.now())")
-    Slave1Data mapRegistersToSlave1Data(InputRegister[] registers);
+    @Mapping(target = "timestamp", expression = "java(java.time.Instant.now())")
+    Slave1Data mapRegistersToData(InputRegister[] registers);
 
     @Named("extractWordTagFromRegisters")
     default Integer extractWordTagFromRegisters(InputRegister[] registers) {
