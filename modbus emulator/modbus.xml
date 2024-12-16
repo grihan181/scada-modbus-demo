@@ -32,78 +32,8 @@
 				</Items>
 			</Groups>
 			<Register>
-				<Name>WordTag</Name>
-				<Addr>0</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>18</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<WorkType>2</WorkType>
-				<DataFormat>2</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 1.WordTag</RegFullName>
-				<RegsCount>1</RegsCount>
-				<Value>0</Value>
-				<DefValue>0</DefValue>
-			</Register>
-			<Register>
-				<Name>FloatTag</Name>
-				<Addr>1</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>4</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<Pila.Amplitude>52</Pila.Amplitude>
-				<Pila.Period>5000</Pila.Period>
-				<Pila.Offset>0</Pila.Offset>
-				<Pila.pType>2</Pila.pType>
-				<WorkType>4</WorkType>
-				<DataFormat>4</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 1.FloatTag</RegFullName>
-				<RegsCount>2</RegsCount>
-				<Value>44,8552017211914</Value>
-				<DefValue>0</DefValue>
-			</Register>
-			<Register>
-				<Name>ShortIntTag</Name>
-				<Addr>3</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>2</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<Sin.Amplitude>100</Sin.Amplitude>
-				<Sin.Period>10000</Sin.Period>
-				<Sin.Offset>0</Sin.Offset>
-				<WorkType>3</WorkType>
-				<DataFormat>2</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 1.ShortIntTag</RegFullName>
-				<RegsCount>1</RegsCount>
-				<Value>95</Value>
-				<DefValue>0</DefValue>
-			</Register>
-			<Register>
 				<Name>IntegerTag</Name>
-				<Addr>4</Addr>
+				<Addr>0</Addr>
 				<BitAddr>0</BitAddr>
 				<vType>3</vType>
 				<Description>
@@ -121,28 +51,7 @@
 				<Period>100</Period>
 				<RegFullName>Сервер.Устройство 1.IntegerTag</RegFullName>
 				<RegsCount>2</RegsCount>
-				<Value>0</Value>
-				<DefValue>0</DefValue>
-			</Register>
-			<Register>
-				<Name>DWordTag</Name>
-				<Addr>6</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>19</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<WorkType>2</WorkType>
-				<DataFormat>4</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 1.DWordTag</RegFullName>
-				<RegsCount>2</RegsCount>
-				<Value>0</Value>
+				<Value>1</Value>
 				<DefValue>0</DefValue>
 			</Register>
 		</Device>
@@ -167,10 +76,10 @@
 				</Items>
 			</Groups>
 			<Register>
-				<Name>Int64Tag</Name>
+				<Name>IntegerTag</Name>
 				<Addr>0</Addr>
 				<BitAddr>0</BitAddr>
-				<vType>20</vType>
+				<vType>3</vType>
 				<Description>
 				</Description>
 				<mSpace>0</mSpace>
@@ -178,56 +87,16 @@
 				</ConstGroupName>
 				<Group>
 				</Group>
-				<WorkType>2</WorkType>
-				<DataFormat>8</DataFormat>
+				<Min>0</Min>
+				<Max>30</Max>
+				<WorkType>1</WorkType>
+				<DataFormat>4</DataFormat>
 				<Percent>0</Percent>
 				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 2.Int64Tag</RegFullName>
-				<RegsCount>4</RegsCount>
-				<Value>0</Value>
+				<RegFullName>Сервер.Устройство 2.IntegerTag</RegFullName>
+				<RegsCount>2</RegsCount>
+				<Value>22</Value>
 				<DefValue>0</DefValue>
-			</Register>
-			<Register>
-				<Name>BoolTag</Name>
-				<Addr>4</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>11</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<WorkType>2</WorkType>
-				<DataFormat>2</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 2.BoolTag</RegFullName>
-				<RegsCount>0</RegsCount>
-				<Value>false</Value>
-				<DefValue>false</DefValue>
-			</Register>
-			<Register>
-				<Name>DateTimeTag</Name>
-				<Addr>4</Addr>
-				<BitAddr>0</BitAddr>
-				<vType>7</vType>
-				<Description>
-				</Description>
-				<mSpace>0</mSpace>
-				<ConstGroupName>
-				</ConstGroupName>
-				<Group>
-				</Group>
-				<WorkType>2</WorkType>
-				<DataFormat>8</DataFormat>
-				<Percent>0</Percent>
-				<Period>100</Period>
-				<RegFullName>Сервер.Устройство 2.DateTimeTag</RegFullName>
-				<RegsCount>4</RegsCount>
-				<Value>0:00:00</Value>
-				<DefValue>0:00:00</DefValue>
 			</Register>
 		</Device>
 	</Server>

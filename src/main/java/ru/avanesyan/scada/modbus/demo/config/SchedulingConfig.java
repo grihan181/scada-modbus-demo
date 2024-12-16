@@ -1,4 +1,4 @@
-package ru.merenkoff.scada.modbus.demo.config;
+package ru.avanesyan.scada.modbus.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

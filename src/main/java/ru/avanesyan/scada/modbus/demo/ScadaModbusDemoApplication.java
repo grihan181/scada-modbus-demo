@@ -1,4 +1,4 @@
-package ru.merenkoff.scada.modbus.demo;
+package ru.avanesyan.scada.modbus.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
