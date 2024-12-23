@@ -1,0 +1,269 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Row title",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "ae74yrq3o3r40f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "127.0.0.1:502-1"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 23,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "ae74yrq3o3r40f"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "$test",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "integer_tag",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "\"timestamp\"",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "data"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": [
+            "127.0.0.1"
+          ],
+          "value": [
+            "127.0.0.1"
+          ]
+        },
+        "definition": "select ip from config",
+        "includeAll": true,
+        "label": "Выберите сервер",
+        "multi": true,
+        "name": "ip",
+        "options": [],
+        "query": "select ip from config",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": [
+            "502"
+          ],
+          "value": [
+            "502"
+          ]
+        },
+        "definition": "select port from config where ip in ($ip)",
+        "includeAll": true,
+        "multi": true,
+        "name": "port",
+        "options": [],
+        "query": "select port from config where ip in ($ip)",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "definition": "select unit_id from config WHERE ip IN ($ip) AND PORT in ($port)",
+        "includeAll": true,
+        "multi": true,
+        "name": "unitId",
+        "options": [],
+        "query": "select unit_id from config WHERE ip IN ($ip) AND PORT in ($port)",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "SELECT MAX(CASE WHEN c.id = 1 THEN d.integer_tag END) AS \"127.0.0.1:502-1\", MAX(CASE WHEN c.id = 2 THEN d.integer_tag END) AS \"127.0.0.1:502-2\", MAX(CASE WHEN c.id = 3 THEN d.integer_tag END) AS \"234.32.4:8080-1\", MAX(CASE WHEN c.id = 4 THEN d.integer_tag END) AS \"127.0.0.1:503-3\", d.timestamp FROM data d JOIN config c ON d.config_id = c.id GROUP BY d.id, d.timestamp ORDER BY d.id;",
+          "value": "SELECT MAX(CASE WHEN c.id = 1 THEN d.integer_tag END) AS \"127.0.0.1:502-1\", MAX(CASE WHEN c.id = 2 THEN d.integer_tag END) AS \"127.0.0.1:502-2\", MAX(CASE WHEN c.id = 3 THEN d.integer_tag END) AS \"234.32.4:8080-1\", MAX(CASE WHEN c.id = 4 THEN d.integer_tag END) AS \"127.0.0.1:503-3\", d.timestamp FROM data d JOIN config c ON d.config_id = c.id GROUP BY d.id, d.timestamp ORDER BY d.id;"
+        },
+        "definition": "SELECT \n    'SELECT ' || \n    STRING_AGG(\n        'MAX(CASE WHEN c.id = ' || c.id || ' THEN d.integer_tag END) AS \"' \n        || c.ip || ':' || c.port || '-' || c.unit_id || '\"', ', '\n    ) || ', d.timestamp ' ||\n    'FROM data d ' ||\n    'JOIN config c ON d.config_id = c.id ' ||\n    'GROUP BY d.id, d.timestamp ' ||\n    'ORDER BY d.id;' AS generated_query\nFROM config c;",
+        "hide": 2,
+        "name": "test",
+        "options": [],
+        "query": "SELECT \n    'SELECT ' || \n    STRING_AGG(\n        'MAX(CASE WHEN c.id = ' || c.id || ' THEN d.integer_tag END) AS \"' \n        || c.ip || ':' || c.port || '-' || c.unit_id || '\"', ', '\n    ) || ', d.timestamp ' ||\n    'FROM data d ' ||\n    'JOIN config c ON d.config_id = c.id ' ||\n    'GROUP BY d.id, d.timestamp ' ||\n    'ORDER BY d.id;' AS generated_query\nFROM config c;",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Modbus",
+  "uid": "ee74z6xhm2hoge",
+  "version": 26,
+  "weekStart": ""
+}
